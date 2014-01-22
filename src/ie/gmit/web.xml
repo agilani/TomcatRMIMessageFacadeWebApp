@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+  <display-name>SD Year 4 - DS Assignment - Asynchronous Encryption Service - G00279198</display-name>
+  <description>2013 Assignment - Asynchronous Encryption Service By Adeel Gilani G00279198</description>
+  
+  <context-param>
+    <param-name>RMI_SERVER</param-name>
+    <param-value>10.2.0.101</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>RMI_REGISTRY_PORT</param-name>
+    <param-value>1099</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>FACADE_NAME</param-name>
+    <param-value>CryptoCompressionService</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>webapp_ready_for_use</param-name>
+    <param-value>0</param-value>
+  </context-param>
+
+  <servlet>
+    <servlet-name>encryption-service-bootstrap</servlet-name>
+    <servlet-class>ie.gmit.EncryptionServiceBootstrap</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>encryption-service-bootstrap</servlet-name>
+    <url-pattern>/bootstrap</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>encryption-service-handler</servlet-name>
+    <servlet-class>ie.gmit.EncryptionServiceHandler</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>encryption-service-handler</servlet-name>
+    <url-pattern>/handler</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>response</servlet-name>
+    <servlet-class>ie.gmit.ResponsePage</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>response</servlet-name>
+    <url-pattern>/response</url-pattern>
+  </servlet-mapping>
+  
+  
+  <listener>
+    <description>contextListener</description>
+    <listener-class>ie.gmit.CListener</listener-class>
+  </listener>
+  
+</web-app>
